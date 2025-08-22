@@ -1,2 +1,4 @@
+github.com/mcuadros/go-octoprint v0.0.0-20190830083709-64ce23ac5e2d h1:k3bfbXIOQRqJND5lHPCXNr4EZNNtSqYrMxDWCBzxnhE=
+github.com/mcuadros/go-octoprint v0.0.0-20190830083709-64ce23ac5e2d/go.mod h1:9LZ/N5NKaFNhr4EB8R9hWhOBvRxcj54WP3YgrNzwjnk=
 github.com/wmarchesi123/go-3dprint-client v0.1.0 h1:zFWqQrGrs55pbPYY8M/Oibl++2RIB7cU68Q+gXYqphA=
 github.com/wmarchesi123/go-3dprint-client v0.1.0/go.mod h1:qz895Qv+X6vbtyKZK0akWtyxiYh0mlZKQAw0MreMi8s=
