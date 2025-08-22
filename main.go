@@ -6,22 +6,21 @@ import (
 	"log"
 	"os"
 
-	"github.com/mcuadros/go-octoprint"
+	"github.com/wmarchesi123/go-3dprint-client/octoprint"
 )
 
 func main() {
-	var printerState octoprint.PrinterState
+	var printerState octoprint.PrinterResponse
 
 	printerStateFile, err := os.ReadFile("printer.json")
 	if err != nil {
 		log.Fatalln("Failed to open printer state file:", err)
 	}
 
-	// client := octoprint.NewClient("[BASE PRINTER URL GOES HERE]", "[API KEY GOES HERE]")
-
 	if err := json.Unmarshal(printerStateFile, &printerState); err != nil {
 		log.Fatalln("Failed to get printer state:", err)
 	}
 
-	fmt.Println(printerState)
+	fmt.Println(printerState.State.Text)
+
 }
