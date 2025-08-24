@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"os"
 
@@ -39,9 +40,10 @@ type ModifiedPrinterResponse struct {
 	TemperatureHistory []octoprint.TemperatureHistory
 }
 
-func convertTemperatureData(data octoprint.PrinterResponse) ModifiedPrinterResponse {
+func convertTemperatureData(data octoprint.PrinterResponse, printerName string) ModifiedPrinterResponse {
 	var m ModifiedPrinterResponse
 
+	m.PrinterName = fmt.Sprintf("Printer %v", printerName)
 	m.State = data.State
 	m.TemperatureHistory = data.Temperature.History
 
