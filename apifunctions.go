@@ -24,6 +24,7 @@ func getPrinterState(apiKey string) octoprint.PrinterResponse {
 
 }
 
+// A representation of a printer temprerature data entry converted for use in a slice / array. the Name field will contain what was the key for the original temperature struct.
 type ModifiedTemperatureData struct {
 	Name   string
 	Actual float64
@@ -32,6 +33,7 @@ type ModifiedTemperatureData struct {
 }
 
 type ModifiedPrinterResponse struct {
+	PrinterName        string
 	State              octoprint.PrinterState
 	Temperature        []ModifiedTemperatureData
 	TemperatureHistory []octoprint.TemperatureHistory
