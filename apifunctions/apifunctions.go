@@ -61,11 +61,11 @@ func ConvertTemperatureData(data octoprint.PrinterResponse, printerName string) 
 	m.Temperature = make([]ModifiedTemperatureData, 6)
 
 	m.Temperature[0] = fillInTemperatureData("bed", data.Temperature.Bed)
-	m.Temperature[1] = fillInTemperatureData("bed", data.Temperature.Tool0)
-	m.Temperature[2] = fillInTemperatureData("bed", data.Temperature.Tool1)
-	m.Temperature[3] = fillInTemperatureData("bed", data.Temperature.Tool2)
-	m.Temperature[4] = fillInTemperatureData("bed", data.Temperature.Tool3)
-	m.Temperature[5] = fillInTemperatureData("bed", data.Temperature.Tool4)
+	m.Temperature[1] = fillInTemperatureData("tool-0", data.Temperature.Tool0)
+	m.Temperature[2] = fillInTemperatureData("tool-1", data.Temperature.Tool1)
+	m.Temperature[3] = fillInTemperatureData("tool-2", data.Temperature.Tool2)
+	m.Temperature[4] = fillInTemperatureData("tool-3", data.Temperature.Tool3)
+	m.Temperature[5] = fillInTemperatureData("tool-4", data.Temperature.Tool4)
 
 	return m
 }
