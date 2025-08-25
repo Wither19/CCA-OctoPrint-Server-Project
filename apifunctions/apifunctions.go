@@ -40,6 +40,17 @@ type ModifiedPrinterResponse struct {
 	TemperatureHistory []octoprint.TemperatureHistory
 }
 
+func fillInTemperatureData(name string, original octoprint.TemperatureData) ModifiedTemperatureData {
+	var new ModifiedTemperatureData
+
+	new.Name = name
+	new.Actual = original.Actual
+	new.Target = original.Target
+	new.Offset = original.Offset
+
+	return new
+}
+
 func ConvertTemperatureData(data octoprint.PrinterResponse, printerName string) ModifiedPrinterResponse {
 	var m ModifiedPrinterResponse
 
@@ -49,35 +60,12 @@ func ConvertTemperatureData(data octoprint.PrinterResponse, printerName string) 
 
 	m.Temperature = make([]ModifiedTemperatureData, 6)
 
-	m.Temperature[0].Name = "bed"
-	m.Temperature[0].Actual = data.Temperature.Bed.Actual
-	m.Temperature[0].Target = data.Temperature.Bed.Target
-	m.Temperature[0].Offset = data.Temperature.Bed.Offset
-
-	m.Temperature[1].Name = "tool-0"
-	m.Temperature[1].Actual = data.Temperature.Tool0.Actual
-	m.Temperature[1].Target = data.Temperature.Tool0.Target
-	m.Temperature[1].Offset = data.Temperature.Tool0.Offset
-
-	m.Temperature[2].Name = "tool-1"
-	m.Temperature[2].Actual = data.Temperature.Tool1.Actual
-	m.Temperature[2].Target = data.Temperature.Tool1.Target
-	m.Temperature[2].Offset = data.Temperature.Tool1.Offset
-
-	m.Temperature[3].Name = "tool-2"
-	m.Temperature[3].Actual = data.Temperature.Tool2.Actual
-	m.Temperature[3].Target = data.Temperature.Tool2.Target
-	m.Temperature[3].Offset = data.Temperature.Tool2.Offset
-
-	m.Temperature[4].Name = "tool-3"
-	m.Temperature[4].Actual = data.Temperature.Tool3.Actual
-	m.Temperature[4].Target = data.Temperature.Tool3.Target
-	m.Temperature[4].Offset = data.Temperature.Tool3.Offset
-
-	m.Temperature[5].Name = "tool-4"
-	m.Temperature[5].Actual = data.Temperature.Tool4.Actual
-	m.Temperature[5].Target = data.Temperature.Tool4.Target
-	m.Temperature[5].Offset = data.Temperature.Tool4.Offset
+	m.Temperature[0] = fillInTemperatureData("bed", data.Temperature.Bed)
+	m.Temperature[1] = fillInTemperatureData("bed", data.Temperature.Tool0)
+	m.Temperature[2] = fillInTemperatureData("bed", data.Temperature.Tool1)
+	m.Temperature[3] = fillInTemperatureData("bed", data.Temperature.Tool2)
+	m.Temperature[4] = fillInTemperatureData("bed", data.Temperature.Tool3)
+	m.Temperature[5] = fillInTemperatureData("bed", data.Temperature.Tool4)
 
 	return m
 }
