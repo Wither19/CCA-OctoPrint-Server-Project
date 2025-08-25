@@ -1,13 +1,15 @@
 package httpfunctions
 
 import (
+	"example/cca-octoprint-backend/apifunctions"
 	"fmt"
 	"net/http"
 	"slices"
 	"strings"
 	"text/template"
-	"example/cca-octoprint-backend/apifunctions"
 )
+
+var printers []string = []string{"a", "b", "c", "d", "e", "f"}
 
 func ParseTemplate(htmlName string) *template.Template {
 	t := template.Must(template.ParseFiles(fmt.Sprintf("./static/pages/%v", htmlName)))
