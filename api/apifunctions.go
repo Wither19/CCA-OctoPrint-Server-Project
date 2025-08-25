@@ -1,4 +1,4 @@
-package main
+package apifunctions
 
 import (
 	"encoding/json"
@@ -9,7 +9,7 @@ import (
 	"github.com/wmarchesi123/go-3dprint-client/octoprint"
 )
 
-func getPrinterState(apiKey string) octoprint.PrinterResponse {
+func GetPrinterState(apiKey string) octoprint.PrinterResponse {
 	var p octoprint.PrinterResponse
 
 	printerStateFile, err := os.ReadFile("printer.json")
@@ -40,7 +40,7 @@ type ModifiedPrinterResponse struct {
 	TemperatureHistory []octoprint.TemperatureHistory
 }
 
-func convertTemperatureData(data octoprint.PrinterResponse, printerName string) ModifiedPrinterResponse {
+func ConvertTemperatureData(data octoprint.PrinterResponse, printerName string) ModifiedPrinterResponse {
 	var m ModifiedPrinterResponse
 
 	m.PrinterName = fmt.Sprintf("Printer %v", printerName)
